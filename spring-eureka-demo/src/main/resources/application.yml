@@ -1,0 +1,33 @@
+#server:
+#  port: 1111
+##配置eureka-server
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    register-with-eureka: false
+#    #需不需要去检索服务。这里注册的是服务端，所以不需要再去检索服务
+#    fetch-registry: false
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#  server:
+#    # 关闭自我保护机制
+#    enable-self-preservation: false
+
+#高可用配置。Eureka服务既充当服务者也充当消费者
+server:
+  port: 1111
+eureka:
+  instance:
+    peer1:
+      hostname: peer1
+      port: 1111
+    peer2:
+      hostname: peer2
+      port: 1112
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.peer1.hostname}:${eureka.instance.peer1.port}/eureka,http://${eureka.instance.peer2.hostname}:${eureka.instance.peer2.port}/eureka
+spring:
+  application:
+    name: peer1-service

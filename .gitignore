@@ -1,0 +1,4 @@
+# Project exclude paths
+/spring-eureka-demo/target/
+/spring-eureka-demo-client-helloservice/target/
+/spring-eureka-demo-hellocustomer/target/
